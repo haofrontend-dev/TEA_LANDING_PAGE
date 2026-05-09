@@ -1,0 +1,129 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Lighter backdrop */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Anchor to bottom */
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--color-bg);
+  padding: 3rem 4rem 4rem 4rem;
+  border-radius: 40px 40px 0 0;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(200, 135, 74, 0.3);
+  border-bottom: none;
+  animation: slideUpDrawer 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideUpDrawer {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: var(--color-caramel);
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  color: var(--color-milk);
+  margin-bottom: 0.5rem;
+}
+
+.modal-content p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.booking-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.booking-form label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-milk);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.booking-form input,
+.booking-form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  outline: none;
+  border-color: var(--color-caramel);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 2.5rem 1.5rem 3rem 1.5rem;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

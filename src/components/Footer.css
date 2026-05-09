@@ -1,0 +1,73 @@
+.footer-section {
+  background-color: var(--color-bg);
+  position: relative;
+  border-top: 1px solid rgba(200, 135, 74, 0.2);
+  padding: 80px 0 40px;
+  overflow: hidden;
+}
+
+.noise-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-brand {
+  font-size: 2.5rem;
+  color: var(--color-milk);
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.brand-col p {
+  color: var(--color-text);
+  line-height: 1.8;
+  max-width: 400px;
+}
+
+.footer-col h4 {
+  font-size: 1.2rem;
+  color: var(--color-milk);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: var(--color-caramel);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(253, 246, 238, 0.1);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .footer-container { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}

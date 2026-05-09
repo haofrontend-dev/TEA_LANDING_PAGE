@@ -1,0 +1,105 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  transition: all var(--ease-luxury) 0.6s;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(13, 10, 8, 0.85); /* var(--color-bg) */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200, 135, 74, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--color-milk);
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:not(.btn-primary)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-caramel);
+  transition: width 0.3s var(--ease-luxury);
+}
+
+.nav-links a:not(.btn-primary):hover {
+  color: var(--color-milk);
+}
+
+.nav-links a:not(.btn-primary):hover::after {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--color-caramel);
+  color: var(--color-cream) !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 40px;
+  font-weight: 500;
+  transition: all 0.3s ease !important;
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  border-color: var(--color-caramel);
+  color: var(--color-caramel) !important;
+  box-shadow: 0 0 15px rgba(200, 135, 74, 0.3);
+}
+
+.nav-lang {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.nav-lang span {
+  transition: color 0.3s ease;
+}
+
+.nav-lang span:hover, .nav-lang span.active {
+  color: var(--color-milk);
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-lang {
+    display: none;
+  }
+}

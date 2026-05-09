@@ -1,0 +1,159 @@
+.how-to-drink-section {
+  padding: 120px 0;
+  background-color: var(--color-bg);
+  background-image: 
+    linear-gradient(rgba(200, 135, 74, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 135, 74, 0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-to-drink-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, var(--color-bg) 90%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 4rem 0;
+}
+
+.steps-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--color-caramel) 10%, var(--color-caramel) 90%, transparent);
+  transform: translateX(-50%);
+  opacity: 0.3;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  /* Removed transition to allow smooth React scrubbing */
+}
+
+.step-item.visible {
+  opacity: 1;
+}
+
+.step-odd {
+  justify-content: flex-start;
+  text-align: right;
+}
+
+.step-even {
+  justify-content: flex-end;
+  text-align: left;
+}
+
+.step-content {
+  width: 45%;
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+.step-odd .step-content {
+  padding-right: 4rem;
+}
+
+.step-even .step-content {
+  padding-left: 4rem;
+}
+
+.step-item h3 {
+  font-size: 2.5rem;
+  color: var(--color-milk);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  padding-bottom: 5px;
+}
+
+.step-item h3 span {
+  display: inline-block;
+  /* Removed transition */
+}
+
+.step-item.visible h3 span {
+  transform: translateY(0);
+}
+
+.step-item p {
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 1.05rem;
+  /* Removed transition */
+}
+
+.step-item.visible p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-number {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12rem;
+  color: rgba(200, 135, 74, 0.05);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.step-odd .step-number {
+  right: 50%;
+  transform: translate(20%, -50%);
+}
+
+.step-even .step-number {
+  left: 50%;
+  transform: translate(-20%, -50%);
+}
+
+.step-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-caramel);
+  border-radius: 50%;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.step-item:hover .step-dot {
+  background-color: var(--color-caramel);
+  box-shadow: 0 0 15px var(--color-caramel);
+}
+
+@media (max-width: 768px) {
+  .steps-line { left: 20px; }
+  .step-item { flex-direction: column; text-align: left; align-items: flex-start; }
+  .step-content { width: 100%; padding-left: 60px !important; padding-right: 0 !important; }
+  .step-number { left: 0; right: auto !important; transform: translate(0, -60%) !important; font-size: 8rem; }
+  .step-dot { left: 20px; }
+}

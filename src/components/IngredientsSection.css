@@ -1,0 +1,72 @@
+.ingredients-section {
+  position: relative;
+  width: 100vw;
+  background-color: var(--color-bg);
+}
+
+.ingredients-cinematic-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+}
+
+.ingredient-block {
+  position: absolute;
+  top: 50%;
+  width: 500px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  will-change: transform, opacity;
+}
+
+.ingredient-block.block-left {
+  left: 10%;
+}
+
+.ingredient-block.block-right {
+  right: 10%;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.ingredient-block .large-num {
+  font-size: 8rem;
+  color: var(--color-caramel);
+  opacity: 0.15;
+  line-height: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.ing-content {
+  border-top: 1px solid rgba(200, 135, 74, 0.4);
+  padding-top: 2rem;
+  position: relative;
+}
+
+.ing-title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  color: var(--color-milk);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.ingredient-block p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  font-weight: 300;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
+
+@media (max-width: 900px) {
+  .ingredient-block.block-left, .ingredient-block.block-right {
+    left: 50%;
+    right: auto;
+    width: 85vw;
+    margin-left: -42.5vw;
+    text-align: left;
+    align-items: flex-start;
+  }
+}

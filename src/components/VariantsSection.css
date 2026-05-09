@@ -1,0 +1,179 @@
+.variants-section {
+  height: 400vh;
+  background-color: var(--color-surface);
+  position: relative;
+}
+
+.variants-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 5vh; /* Added padding to lift cards slightly off the bottom edge */
+}
+
+.variants-header {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: clamp(3rem, 5vw, 4rem);
+  color: var(--color-milk);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--color-caramel);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.carousel-viewport {
+  width: 100%;
+  position: relative;
+  /* Perspective creates the 3D depth field */
+  perspective: 1500px;
+  padding-left: calc(50vw - 190px);
+}
+
+.carousel-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.variant-card {
+  width: 380px;
+  height: clamp(400px, 65vh, 600px); /* Adaptive height to prevent clipping on 730px laptops */
+  background-color: var(--color-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  border: 1px solid rgba(200, 135, 74, 0.15);
+  transform-style: preserve-3d;
+  /* NO transform transition here, react inline style lerps it smoothly */
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s, border-color 0.4s;
+}
+
+.variant-card.active {
+  width: 440px;
+  box-shadow: 0 20px 80px rgba(200, 135, 74, 0.25);
+  border-color: rgba(200, 135, 74, 0.5);
+}
+
+.card-image {
+  width: 100%;
+  flex: 1; 
+  overflow: hidden;
+  transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.variant-card.active .card-image {
+  flex: 0 0 50%;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-luxury);
+}
+
+.variant-card.active .card-image img {
+  transform: scale(1.05);
+}
+
+/* Accordion wrapper for details */
+.card-detail-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  background: var(--color-bg);
+  /* 3D Fold out effect */
+  transform: rotateX(-20deg);
+  transform-origin: top;
+}
+
+.variant-card.active .card-detail-wrapper {
+  max-height: 350px;
+  opacity: 1;
+  flex: 1;
+  transform: rotateX(0deg);
+}
+
+.card-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-content h3 {
+  font-size: 2rem;
+  color: var(--color-milk);
+  margin-bottom: 0.5rem;
+}
+
+.card-content .notes {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-caramel);
+  color: var(--color-caramel);
+}
+
+.order-now-btn {
+  margin-top: auto;
+  background: var(--color-caramel);
+  color: var(--color-milk);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.order-now-btn:hover {
+  background: #b57a43;
+}
+
+@media (max-width: 900px) {
+  .variants-section { height: 300vh; }
+  .carousel-viewport { padding-left: calc(50vw - 160px); }
+  .variant-card { width: 300px; height: 500px; }
+  .variant-card.active { width: 340px; }
+  .card-content { padding: 1.5rem; }
+  .card-content h3 { font-size: 1.5rem; }
+}
